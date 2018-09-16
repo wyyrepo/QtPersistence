@@ -1,0 +1,133 @@
+Hacking on QtPersistence
+-----------------
+
+Please respect these guidelines when coding for QtPersistence, thanks!
+
+Where this document isn't clear, refer to QtPersistence code.
+
+Thanks to the Amarok folks for the starter content, which has been taken from
+the intro_and_style.txt file in the HACKING directory of Amarok's git
+repository and edited for my purposes.
+
+
+Formatting
+----------
+* Spaces, not tabs
+* Indentation is 4 spaces
+* Lines should be limited to 80 characters as much as possible. Lines that are
+  up to 90 characters long are acceptable in some circumstances.
+* No spaces between brackets and argument functions
+* For pointer and reference variable declarations there is no space between
+  the type and the * or & and a space before the variable name.
+* For if, else, while and similar statements put the brackets on the same line.
+  Brackets are required for single statements.
+* Function and class definitions have their brackets on separate lines
+* A function implementation's return type is on the same line
+* lowercase.{cpp,h} style file names.
+* Qt 4 includes a foreach keyword which makes it very easy to iterate over all
+  elements of a container. Don't use it and prefer Q_FOREACH instead to avoid
+  any possible namespace clashes
+
+Example:
+
+ | bool MyClass::myMethod(QStringList list, const QString& name)
+ | {
+ |     if( list.isEmpty() ) {
+ |         return false;
+ |     }
+ |
+ |     /*
+ |       Define the temporary variable like this to restrict its scope
+ |       when you do not need it outside the loop. Let the compiler
+ |       optimise it.
+ |      */
+ |     Q_FOREACH( const QString &string, list ) {
+ |         debug() << "Current string is " << string << endl;
+ |     }
+ | }
+
+
+
+
+Class, Function & Variable Naming
+---------------------------------
+*Use CamelCase for everything.
+*Local variables should start out with a lowercase letter.
+*Class names are captialized
+*Prefix class member variables with m_, ex. m_trackList.
+*Prefix static member variables with s_, ex s_instance
+*Functions are named in the Qt style. It's like Java's, without the "get" 
+ prefix.
+  *A getter is variable()
+  *If it's a getter for a boolean, prefix with 'is', so isCondition()
+  *A setter is setVariable( arg ).
+
+
+Includes
+--------
+Header includes should be listed in the following order:
+    - Own Header
+    - Qt includes
+    - Local includes
+
+Includes in a header file should be kept to the absolute minimum, as to keep
+compile times low. Use forward declarations in header files instead. Forward
+declarations work for pointers and const references.
+
+
+Comments
+--------
+Comment your code. Don't comment what the code does, comment on the purpose of the code. It's
+good for others reading your code, and ultimately it's good for you too.
+
+For headers, use the Doxygen syntax. See: http://www.stack.nl/~dimitri/doxygen/
+
+Use the '\' prefix to start commands, rather than the '@' prefix. Even though
+doxygen supports both, the '\' are preferred.
+
+Example:
+
+ | /**
+ |  * Start playback.
+ |  * \param offset Start playing at @p msec position.
+ |  * \return True for success.
+ |  */
+ | virtual bool play( uint offset = 0 ) = 0;
+
+
+
+0 vs NULL
+---------
+The use of 0 to express a null pointer is preferred over the use of NULL.
+0 is not a magic value, it's the defined value of the null pointer in C++.
+NULL, on the other hand, is a preprocessor directive (#define) and not only is
+it more typing than '0' but preprocessor directives are less elegant.
+
+ |     SomeClass *instance = 0;
+
+
+Commenting Out Code
+-------------------
+Don't keep commented out code. It just causes confusion and makes the source
+harder to read. Remember, the last revision before your change is always
+availabe in Git. Hence no need for leaving cruft in the source.
+
+Wrong:
+ | myWidget->show();
+ | //myWidget->rise(); //what is this good for?
+
+Correct:
+ | myWidget->show();
+
+
+Copyright
+---------
+To comply with the LGPL, add your name, email address & the year to the top of any file
+that you edit. If you bring in code or files from elsewhere, make sure its
+LGPL-compatible and to put the authors name, email & copyright year to the top of
+those files.
+
+Please note that it is not sufficient to write a pointer to the license (like a URL).
+The complete license header needs to be written everytime.
+
+Thanks, now have fun!

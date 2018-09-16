@@ -1,0 +1,24 @@
+Installing QtPersistence from Source
+==============================================================================
+
+QtPersistence uses CMake to build the source code. For most systems, the
+following steps will work just fine. These steps assume that you're in the
+toplevel source directory (the same directory this file is in) already.
+
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+
+It is possible for CMake to report that it's found a few of the external
+libraries successfully. If QtPersistance fails to compile, but CMake reports
+that it found everything it needed, doing the following might help:
+
+- For GTest, set GTEST_ROOT to the location of the GTest install prefix.
+  As an example, if the GTest library is found in /opt/local/lib, then add
+  "-DGTEST_ROOT=/opt/local" to the cmake command line.
+
+- For GMock, set GMOCK_ROOT to the location of the GMock install prefix.
+  As an example, if the GMock library is found in /opt/local/lib, then add
+  "-DGMOCK_ROOT=/opt/local" to the cmake command line.

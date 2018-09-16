@@ -1,0 +1,5 @@
+build
+.*.swp
+.kdev4
+*.kdev4
+*.gcov

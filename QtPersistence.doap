@@ -1,0 +1,53 @@
+<Project
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns="http://usefulinc.com/ns/doap#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:admin="http://webns.net/mvcb/">
+
+  <name>QtPersistence</name>
+  <shortname>QtPersistence</shortname>
+  <homepage rdf:resource="http://gitorious.org/qtpersistence"/>
+  <created>2009-12-28</created>
+  <shortdesc xml:lang="en">
+      Qt-based ORM framework
+  </shortdesc>
+  <description xml:lang="en">
+      QtPersistence is a project to create an ORM library for Qt Users. It’s
+      loosely based on ideas from both the Active Record and Data Mapper Ruby
+      ORM projects.
+  </description>
+  <category></category>
+  <wiki/>
+  <bug-database/>
+  <programming-language>C++</programming-language>
+  <license rdf:resource="http://usefulinc.com/doap/licenses/lgpl"/>
+
+  <repository>
+      <GitRepository>
+          <location
+              rdf:resource="http://www.gitorious.org/qtpersistence/qtpersistence">
+          </location>
+          <browse
+              rdf:resource="http://www.gitorious.org/qtpersistence/qtpersistence/commits/master">
+          </browse>
+      </GitRepository>
+  </repository>
+
+  <maintainer>Matt Rogers</maintainer>
+  <release>
+      <Version>
+          <revision>0.1</revision>
+          <branch>master</branch>
+          <name>get it out there</name>
+          <created>2009-12-29</created>
+          <dc:description>
+              Initial release.
+          </dc:description>
+      </Version>
+  </release>
+
+</Project>
+
+<!-- vim: set et sts=4 sw=4 ts=16 tw=78 : -->
